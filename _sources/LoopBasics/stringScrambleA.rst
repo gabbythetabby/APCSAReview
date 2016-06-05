@@ -137,7 +137,7 @@ The following shows what to do to solve the example with "WHOA".
       }
    }
    
-In this case since we didn't swap any characters we only incement the index by 1 each time through the loop.
+In this case since we didn't swap any characters we only increment the index by 1 each time through the loop.
 
 The code will need to loop through the characters in the string and compare two adjacent characters.  There are two ways to compare two adjacent characters without going beyond the bounds of the loop.  One way is to start the index at 0 and loop while the index is less than one less than the length of the string and then get the characters at the index and at the index plus one. Another way is to start the index at 1 and loop while the index is less than the length of the string and then get the characters at one less than the index and at the index.  If the first character is an "A" and the second is not an "A" then swap them and increment the index to make sure that you don't check characters that have already been swapped.  Each time through the loop also increment the index.  
 

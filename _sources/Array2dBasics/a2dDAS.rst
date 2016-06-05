@@ -51,20 +51,44 @@ Set Value(s) in a 2D Array
 
 When arrays are created their contents are automatically initialized to 0 for numeric types, null for object references, and false for type boolean.  To explicitly put a value in an array you give the name of the array followed by the row index in brackets followed by the column index in brackets and then an ``=`` followed by a value.    
 
-.. code-block:: java 
 
-  ticketInfo[0][0] = 25;
-  ticketInfo[0][1] = 20;
-  ticketInfo[0][2] = 25;
-  ticketInfo[1][0] = 25;
-  ticketInfo[1][1] = 20;
-  ticketInfo[1][2] = 25;
-  seatingChart[0][0] = "Jamal";
-  seatingChart[0][1] = "Maria";
-  seatingChart[1][0] = "Jacob";
-  seatingChart[1][1] = "Suzy";
-  seatingChart[2][0] = "Emma";
-  seatingChart[2][1] = "Luke";
+.. activecode:: 2DArraySet
+  :language: java
+  
+  public class Test 
+  {
+     public static void main(String[] args)
+     {
+        // declare arrays
+        int[][] ticketInfo;
+        String[][] seatingChart;
+        
+        // create arrays
+        ticketInfo = new int [2][3];
+        seatingChart =  new String [3][2];
+        
+        // initialize the array elements
+        ticketInfo[0][0] = 15;
+        ticketInfo[0][1] = 10;
+        ticketInfo[0][2] = 15;
+        ticketInfo[1][0] = 25;
+        ticketInfo[1][1] = 20;
+        ticketInfo[1][2] = 25;
+        seatingChart[0][0] = "Jamal";
+        seatingChart[0][1] = "Maria";
+        seatingChart[1][0] = "Jacob";
+        seatingChart[1][1] = "Suzy";
+        seatingChart[2][0] = "Emma";
+        seatingChart[2][1] = "Luke";
+        
+        // print the contents
+        System.out.println(ticketInfo);
+        System.out.println(seatingChart);
+     }
+  }
+  
+Did it print what you expected?  When you print a two dimensional array you just get the reference to the object.  To see what the values are after this code runs use the Java Visualizer by clicking on this `link <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Test+%0A++%7B%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++//+declare+arrays%0A++++++++int%5B%5D%5B%5D+ticketInfo%3B%0A++++++++String%5B%5D%5B%5D+seatingChart%3B%0A++++++++%0A++++++++//+create+arrays%0A++++++++ticketInfo+%3D+new+int+%5B2%5D%5B3%5D%3B%0A++++++++seatingChart+%3D++new+String+%5B3%5D%5B2%5D%3B%0A++++++++%0A++++++++//+initialize+the+array+elements%0A++++++++ticketInfo%5B0%5D%5B0%5D+%3D+15%3B%0A++++++++ticketInfo%5B0%5D%5B1%5D+%3D+10%3B%0A++++++++ticketInfo%5B0%5D%5B2%5D+%3D+15%3B%0A++++++++ticketInfo%5B1%5D%5B0%5D+%3D+25%3B%0A++++++++ticketInfo%5B1%5D%5B1%5D+%3D+20%3B%0A++++++++ticketInfo%5B1%5D%5B2%5D+%3D+25%3B%0A++++++++seatingChart%5B0%5D%5B0%5D+%3D+%22Jamal%22%3B%0A++++++++seatingChart%5B0%5D%5B1%5D+%3D+%22Maria%22%3B%0A++++++++seatingChart%5B1%5D%5B0%5D+%3D+%22Jacob%22%3B%0A++++++++seatingChart%5B1%5D%5B1%5D+%3D+%22Suzy%22%3B%0A++++++++seatingChart%5B2%5D%5B0%5D+%3D+%22Emma%22%3B%0A++++++++seatingChart%5B2%5D%5B1%5D+%3D+%22Luke%22%3B%0A++++++++%0A++++++++//+print+the+contents%0A++++++++System.out.println(ticketInfo)%3B%0A++++++++System.out.println(seatingChart)%3B%0A+++++%7D%0A++%7D&mode=display&curInstr=0>`_
+
   
 **Check your understanding**
 
@@ -106,6 +130,8 @@ To get the value in a 2D array give the name of the array followed by the row an
 
 .. code-block:: java 
 
+  int[][] ticketInfo = {{25,20,25}, {25,20,25}};
+  String[][] seatingInfo = {{"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"}};
   int value = ticketInfo[1][0];
   String name = seatingInfo[0][1]; 
   

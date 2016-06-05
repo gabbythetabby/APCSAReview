@@ -26,8 +26,8 @@ To identify an insertion sort look for the following:
 
 The code for ``insertionSort`` below is from the AP CS A course description. 
 
-.. code-block:: java 
-  :linenos:
+.. activecode:: insertionSort
+  :language: java
   
   import java.util.Arrays;
   

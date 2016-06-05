@@ -177,8 +177,7 @@ You can even start in the middle and loop through the rest of the array.  Does t
    =====
      double total = 0;
      for (int i = 0; 
-          i < 3 && 
-          i < a.length;  
+          i < a.length && i < 3; 
           i++)
      {
    =====

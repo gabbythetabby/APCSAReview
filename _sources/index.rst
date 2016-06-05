@@ -32,6 +32,10 @@ Java Basics: Classes and Objects
    JavaBasics/whatIsJava.rst
    JavaBasics/introClassObject.rst
    JavaBasics/firstClass.rst
+   JavaBasics/compileTimeErrors.rst
+   JavaBasics/firstOOClass.rst
+   JavaBasics/runClass.rst
+   JavaBasics/partsOfAClass.rst
 
 
 Variables
@@ -77,6 +81,7 @@ Conditionals
    :maxdepth: 2
 
    Conditionals/cbasics.rst
+   Conditionals/threeOrMore.rst
    Conditionals/cComplex.rst
    Conditionals/cShortCircuit.rst
    Conditionals/cDeMorgans.rst
@@ -85,6 +90,7 @@ Conditionals
    Conditionals/cEasyMC.rst
    Conditionals/cMedMC.rst
    Conditionals/cHardMC.rst
+   Conditionals/timeFRQ.rst
    
 Magpie Chatbot Lab
 ::::::::::::::::::::
@@ -92,7 +98,10 @@ Magpie Chatbot Lab
 .. toctree::
    :maxdepth: 2
 
-   Labs/magpie.rst
+   Labs/magpie1.rst
+   Labs/magpie2.rst
+   Labs/magpie3.rst
+   Labs/magpie4.rst
    
 Loops
 ::::::::::::::::::::
@@ -101,8 +110,8 @@ Loops
    :maxdepth: 2
 
    LoopBasics/lbasics.rst
-   LoopBasics/lFor.rst
    LoopBasics/lWhile.rst
+   LoopBasics/lFor.rst
    LoopBasics/lMistakes.rst
    LoopBasics/lPractice.rst
    LoopBasics/lEasyMC.rst
@@ -128,7 +137,10 @@ Arrays
    ArrayBasics/aEasyMC.rst
    ArrayBasics/aMedMC.rst
    ArrayBasics/aHardMC.rst  
+   ArrayBasics/arrayExam.rst
    ArrayBasics/selfDivisorB.rst
+   ArrayBasics/horseBarnA.rst
+   ArrayBasics/horseBarnB.rst
    
 List and ArrayList
 ::::::::::::::::::::
@@ -145,6 +157,10 @@ List and ArrayList
    ListBasics/listEasyMC.rst
    ListBasics/listMedMC.rst
    ListBasics/listHardMC.rst
+   ListBasics/stringScrambleB.rst
+   ListBasics/climbClubA.rst
+   ListBasics/climbClubB.rst
+   ListBasics/climbClubC.rst
    
 Two-dimensional Arrays
 :::::::::::::::::::::::
@@ -171,19 +187,27 @@ Object-Oriented Concepts
    :maxdepth: 2
 
    OOBasics/objectObasics.rst
+   OOBasics/objects&Classes.rst
+   OOBasics/ooInheritance.rst
    OOBasics/ooAssocVsInherit.rst
    OOBasics/ooOverrideInherited.rst
+   OOBasics/ooOverrideVsOverload.rst
    OOBasics/ooSuper.rst
    OOBasics/ooInheritanceAccess.rst
    OOBasics/ooInheritanceAndConstructors.rst
    OOBasics/ooAbstract.rst
    OOBasics/ooInheritanceAndInterfaces.rst
+   OOBasics/ooComparable.rst
    OOBasics/ooPoly.rst
    OOBasics/ooMistakes.rst
    OOBasics/ooPractice.rst
    OOBasics/ooEasyMC.rst
    OOBasics/ooMedMC.rst
    OOBasics/ooHardMC.rst
+   OOBasics/TrioA.rst
+   OOBasics/TrioScore1.rst
+   OOBasics/TrioScore2.rst
+   OOBasics/TrioScore3.rst
    
 Recursion
 :::::::::
@@ -213,13 +237,15 @@ Searching and Sorting
    SearchSort/insertionSort.rst
    SearchSort/mergeSort.rst
    
-Practice Multiple-Choice Exams
+Preparing for the Exam
 :::::::::::::::::::::::::::::::::
-
 .. toctree::
    :maxdepth: 2
 
-   Tests/test1.rst
+   Tests/testPractice.rst
+   Tests/test1nt.rst
+   Tests/test2nt.rst
+
    
 Timed Multiple-Choice Exams
 :::::::::::::::::::::::::::::::::
@@ -227,6 +253,7 @@ Timed Multiple-Choice Exams
 .. toctree::
    :maxdepth: 2
 
+   Tests/test1.rst
    Tests/test2.rst
    Tests/test3.rst
    Tests/test4.rst

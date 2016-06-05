@@ -57,20 +57,50 @@ To create an array use the **new** keyword, followed by a space, then the type, 
   
 Array elements are initialized to 0 if they are a numeric type (int or double), ``false`` if they are of type ``boolean``, or ``null`` if they are an object type.  
 
+.. figure:: Figures/arrayIndicies.png
+    :width: 200px
+    :align: center
+    :figclass: align-center
+
+    Figure 2: Two 5 element arrays with their values set to the default values for integer and object arrays.
+
+.. note::
+
+    The first value in an array is stored at index 0 and the index of the last value is the length of the array minus 1.  
+
 To put a value in an array you give the name of the array and the index number in brackets ([0]).  The first item in an array is at index 0.  
 
-.. code-block:: java 
-
-  highScores[0] =  99;
-  highScores[1] =  98;
-  highScores[2] =  98;
-  highScores[3] =  88;
-  highScores[4] =  68;
-  names[0] = "Jamal";
-  names[1] = "Emily";
-  names[2] = "Destiny"; 
-  names[3] = "Mateo";
-  names[4] = "Sofia"; 
+.. activecode:: array-set
+   :language: java
+   
+   public class Test1
+   {
+      public static void main(String[] args)
+      {
+        int[ ] highScores = null;
+        String[ ] names = null;
+        
+        highScores = new int[5];
+        names = new String[5];
+        
+        System.out.println(highScores[0]);
+        System.out.println(names[0]);
+        
+        highScores[0] =  99;
+        highScores[1] =  98;
+        highScores[2] =  98;
+        highScores[3] =  88;
+        highScores[4] =  68;
+        System.out.println(highScores[0]);
+        
+        names[0] = "Jamal";
+        names[1] = "Emily";
+        names[2] = "Destiny"; 
+        names[3] = "Mateo";
+        names[4] = "Sofia"; 
+        System.out.println(names[0]);
+      }
+   }
 
 You can also initialize (set) the values in the array when you create it.  In this case you don't need to specify the size of the array, it will be determined from the values you give.  
 
@@ -86,7 +116,7 @@ When you create an array of a **primitive type** (like ``int``) with initial val
     :align: center
     :figclass: align-center
 
-    Figure 2: A primitive array and an object array
+    Figure 3: A primitive array and an object array
     
 ..	index::
     single: dot-notation
@@ -108,6 +138,17 @@ Arrays know their length (how many elements they can store).  It is a public rea
 
 **Check your understanding**
 
+.. clickablearea:: arrayClick1
+        :question: Click on the values at index 1 and 3 in the following array.
+        :feedback: Remember that the first value is at index 0.  Click on an area again to unselect it and try again.
+        :table:
+        :correct: 1,2;1,4
+        :incorrect: 1,1;1,3;
+        
+        +----+----+----+----+
+        | 3  | 2  | 1  | -3 |
+        +----+----+----+----+
+
 .. mchoice:: qab_1
    :answer_a: 0
    :answer_b: 1
@@ -116,6 +157,17 @@ Arrays know their length (how many elements they can store).  It is a public rea
    :feedback_b: While this matches with how we number some things, the first item in an array is at index 0.
 
    What index is the first element in an array at?
+   
+.. clickablearea:: arrayClick2
+        :question: Click on the values at index 0 and 2 in the following array.
+        :feedback: Remember that the first value is at index 0.  Click on an area again to unselect it and try again.
+        :table:
+        :correct: 1,1;1,3
+        :incorrect: 1,2;1,4;
+        
+        +----+----+----+----+
+        | 4  | -2 |  8 | 7  |
+        +----+----+----+----+
    
 .. mchoice:: qab_2
    :answer_a: highScores.length

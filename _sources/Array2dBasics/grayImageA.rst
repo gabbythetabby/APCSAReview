@@ -75,13 +75,13 @@ How to solve this problem
 To solve this problem, we will need to loop through the entire 2D array, looking for instances of a ``WHITE`` pixel, keeping track of our count during the loop.
 
 .. mchoice:: frgia_1
-   :answer_a: for
-   :answer_b: for each
-   :answer_c: while
-   :correct: c
-   :feedback_a: Use a for loop when you know how many times a loop needs to execute. Do you know that here?
-   :feedback_b: Use a for each loop when you want to loop through all values in a collection. Do we have a collection here?  
-   :feedback_c: Use a while loop when you don't know how many times a loop needs to execute.  
+   :answer_a: single for each loop
+   :answer_b: nested for loop
+   :answer_c: nested while loop
+   :correct: b
+   :feedback_a: This is a two-dimensional array so you would need a nested for-each loop. 
+   :feedback_b: For a two-dimensional array you can use a nested for loop or you could also use a nested for-each loop.    
+   :feedback_c: You could use a nested while loop, but since you know the numbers of rows and columns a nested for loop is usually better since with a while loop you could forget to increment the row or column index.
 
    Which loop should you use to solve this problem?
 

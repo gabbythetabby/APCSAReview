@@ -16,29 +16,45 @@ You don't have to loop through an array from the front to the back.  You can loo
    public class ArrayWorker
    {
       private int[ ] values;
-      
+
       public ArrayWorker(int[] theValues)
       {
          values = theValues;
       }
-      
-      public int getIndexLastSmaller(int compare)
+
+      public void multAll(int amt)
       {
-        for (int i = values.length - 1; i >=0; i--)
+        for (int i = 0; i < values.length; i++)
         {
-          if (values[i] < compare) return i;
-        }
-        return -1; // to show none found
-      }
-      
-      public static void main(String[] args)
+          values[i] = values[i] * amt;
+        } // end for loop
+      } // end method
+
+      public void printValues()
       {
-        int[] numArray =  {-3, -2, 4, 16, 23, 55};
-        ArrayWorker aWorker = new ArrayWorker(numArray); 
-        System.out.println(aWorker.getIndexLastSmaller(20));
+        for (int val : values )
+        {
+          System.out.print(val + ", ");
+        }
+        System.out.println();
+      }
+   
+      public static void main (String[] args)
+      {
+         int[] theArray = {1,2,3,-1,-2};
+         ArrayWorker worker = new ArrayWorker(theArray);
+         worker.printValues();
+         worker.multAll(2);
+         worker.printValues();
       }
    }
    
+.. note:: 
+   
+   Notice that if the array is a field of the ArrayWorker class you must create an ArrayWorker object in the main method.  You don't have to pass the array to the multAll method like you do if the method is static.  The object already has the array as a field and any object method has access to it.
+   
+You can step through execution of this code using the Java Visualizer by clicking on the following `link1 <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+ArrayWorker%0A%7B%0A+++private+int%5B+%5D+values%3B%0A%0A+++public+ArrayWorker(int%5B%5D+theValues)%0A+++%7B%0A++++++values+%3D+theValues%3B%0A+++%7D%0A%0A+++public+void+multAll(int+amt)%0A+++%7B%0A+++++for+(int+i+%3D+0%3B+i+%3C+values.length%3B+i%2B%2B)%0A+++++%7B%0A+++++++values%5Bi%5D+%3D+values%5Bi%5D+*+amt%3B%0A+++++%7D+//+end+for+loop%0A+++%7D+//+end+method%0A%0A+++public+void+printValues()%0A+++%7B%0A+++++for+(int+val+%3A+values+)%0A+++++%7B%0A+++++++System.out.print(val+%2B+%22,+%22)%3B%0A+++++%7D%0A+++++System.out.println()%3B%0A+++%7D%0A+++%0A+++public+static+void+main+(String%5B%5D+args)%0A+++%7B%0A++++++int%5B%5D+theArray+%3D+%7B1,2,3,-1,-2%7D%3B%0A++++++ArrayWorker+worker+%3D+new+ArrayWorker(theArray)%3B%0A++++++worker.printValues()%3B%0A++++++worker.multAll(2)%3B%0A++++++worker.printValues()%3B%0A+++%7D%0A%7D&mode=display&curInstr=0>`_
+
 .. mchoice:: qab_6
    :answer_a: -1
    :answer_b: -15

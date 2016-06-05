@@ -10,16 +10,37 @@ Association vs Inheritance
     single: association
     pair: relationships; association
 
-Another type of relationship between classes is the *has-a* relationship or *association* relationship.  Use this when the object of one class contains a reference to one or more of another class.  For example, a course can have many course sections (periods) associated with it as shown below.  The ``1`` near the ``Course`` means that ``1`` course object is associated with the number shown near the other class.  In this case it is ``*`` which means 0 to many.  So one course is associated with 0 to many course sections.
+Another type of relationship between classes is the *has-a* relationship or *association* relationship.  Use this when the object of one class contains a reference to one or more of another class.  For example, a course can have many course periods associated with it as shown below.  The ``1`` near the ``Course`` means that ``1`` course object is associated with the number shown near the other class.  In this case it is ``*`` which means 0 to many.  So one course is associated with 0 to many course periods.
 
-.. figure:: Figures/course.png
+.. figure:: Figures/assoc.png
     :width: 300px
     :align: center
     :figclass: align-center
 
     Figure 2: A UML Class Diagram showing Association
+    
+This would typically translate into a field in the ``Course`` class that has an array or list of ``CoursePeriod`` objects.  The ``CoursePeriod`` class would have a field that is of type ``Course`` as shown below.  
+
+.. code-block:: java 
+
+  public class Course
+  {
+     private List<CoursePeriod> periodList;
+  }
+  
+  public class CoursePeriod
+  {
+     private Course myCourse;
+  }
+  
+Substitution Test for Inheritance
+----------------------------------
   
 If you aren't sure if a class should inherit from another class ask yourself if you can substitute the child class type for the parent class type.  For example, if you have a ``Book`` class and it has a subclass of ``ComicBook`` does that make sense?  Is a comic book a kind of book?  Yes, a comic book is a kind of book so inheritance makes sense.  If it doesn't make sense use *association* or the *has-a* relationship instead.
+
+.. note::
+
+   Only use inheritance when the child class is really a type of the parent class, otherwise use association.
 
 **Check your understanding**
 
@@ -47,7 +68,7 @@ If you aren't sure if a class should inherit from another class ask yourself if 
    :feedback_b: Is a movie a type of movie showing?  Or, does a movie showing have a movie associated with it?  
    :feedback_c: A movie showing is not a type of movie and a movie is not a type of movie showing.  A movie showing has a movie associated with it.
     
-    A movie theater has multiple showings of a movie each day.  What should the relationship be between the Movie class and the MovieShowing class?   
+    A movie theater has multiple showings of a movie each day. Each movie showing has a start time and location (theater number).  What should the relationship be between the Movie class and the MovieShowing class?   
     
 .. mchoice:: qoo_3
    :answer_a: superclass
@@ -69,16 +90,16 @@ If you aren't sure if a class should inherit from another class ask yourself if 
    :answer_d: I and III
    :answer_e: I only
    :correct: b
-   :feedback_a: In fact, all of the reasons listed are valid. Subclasses can reuse methods written for superclasses without code replication, subclasses can be stored in the same array, and passed as arguments to methods meant for the superclass. All of which make writing code more streamlined. 
+   :feedback_a: In fact, all of the reasons listed are valid. Subclasses can reuse object methods written for superclasses without code replication, subclasses can be stored in the same array when the array is declared to be of the parent type, and objects of subclasses can passed as arguments of the superclass type. All of which make writing code more streamlined. 
    :feedback_b: All of these are valid reasons to use an inheritance heirarchy. 
-   :feedback_c: III is also valid. In some cases you might want to store subclasses together in a single array, and inheritance allows for this.
-   :feedback_d: II is also valid. In some cases a single method is applicable for a number of subclasses, and inheritance allows you to pass objects of the subclasses to the same method instead of writing individual methods for each subclass.
+   :feedback_c: III is also valid. In some cases you might want to store objects of subclasses together in a single array declared to be of the parent type, and inheritance allows for this.
+   :feedback_d: II is also valid. In some cases a single method is applicable for a number of subclasses, and inheritance allows you to pass objects of the subclasses to the same method if it takes an argument of the parent type, instead of writing individual methods for each subclass.
    :feedback_e: I and III are also valid, in some cases a single method is applicable for a number of subclasses, and inheritance allows you to pass all the subclasses to the same method instead of writing individual methods for each subclass and you might want to store subclasses together in a single array, and inheritance allows for this.
     
     Question: Which of the following reasons for using an inheritance heirarchy are valid?
-    I.   Methods from a superclass can be used in a subclass without rewriting or copying code.
-    II.  Objects from subclasses can be passed as arguments to a method designed for the superclass
-    III. Objects from subclasses can be stored in the same array
+    I.   Object methods from a superclass can be used in a subclass without rewriting or copying code.
+    II.  Objects from subclasses can be passed as arguments to a method that takes an argument of the parent type.
+    III. Objects from subclasses can be stored in the same array of the parent type.
     IV.  All of the above
     V.   None of the above
 

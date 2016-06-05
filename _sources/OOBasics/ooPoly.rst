@@ -8,14 +8,16 @@ Polymorphism
 ..	index::
     single: polymorphism
     
-**Polymorphism** is a big word that you can break down into "poly" which means many and "morphism" which means form.  So, it just means many forms.  In Java it means that the method that gets called at **run-time** (when the code is run) depends on the type of the object at **run-time**.  This is simliar to a toddler toy that has pictures of animals and when a handle is pulled an arrow spins.  When the arrow stops the toy plays the sound associated with that animal. 
+**Polymorphism** is a big word that you can break down into "poly" which means many and "morphism" which means form.  So, it just means many forms.  In Java it means that the method that gets called at **run-time** (when the code is run) depends on the type of the object at **run-time**.  
+
+This is simliar to a toddler toy that has pictures of animals and when a handle is pulled an arrow spins.  When the arrow stops the toy plays the sound associated with that animal. 
 
 .. image:: http://www.toysrus.com/graphics/product_images/pTRU1-5452971_alternate1_dt.jpg
    :alt: Picture of a See N Say toy 
    :align: center
    :width: 300
    
-If you were simulating this toy in software you could create an Animal class that had an abstract makeNoise method. Each subclass of Animal would override the makeNoise method to make the correct noise for that type.  
+If you were simulating this toy in software you could create an Animal class that had an abstract makeNoise method. Each subclass of Animal would override the makeNoise method to make the correct noise for that type.  This type of polymorphism is called **inheritance-based polymorphism**.  You have a common parent class, but the behavior is specified in the child class.
 
 ..	index::
     single: declared type
@@ -25,13 +27,29 @@ If you were simulating this toy in software you could create an Animal class tha
     pair: type; actual
     pair: type; run-time
 
-In Java an object variable has both a **declared type** and a **run-time type** or **actual type**.  The *declared type* of a variable is the type that is used in the declaration.  The *run-time type* or *actual type* is the class that actually creates the object.  The ``nameList`` variable declared below has a declared type of ``List`` and an actual or run-time type of ``ArrayList``.  
+.. note ::
+
+   In Java an object variable has both a **declared type** and a **run-time type** or **actual type**.  The *declared type* of a variable is the type that is used in the declaration.  The *run-time type* or *actual type* is the class that actually creates the object.  
+   
+The variable ``nameList`` declared below has a **declared type** of ``List`` and an **actual** or **run-time type** of ``ArrayList``.  The complier will check if the declared type has the methods or inherits the methods being used in the code and give an error if it doesn't find the method(s).  The List interface does have a ``add`` method so this code will compile.  At run-time the execution environment will first look for the ``add`` method in the ``ArrayList`` class since that is the actual or run-time type. If it doesn't find it there it will look in the parent class and keep looking up the inheritance tree till it finds the method.  The method will be found, since otherwise the code would not have compiled.
 
 .. code-block:: java 
 
   List<String> nameList = new ArrayList<String>(); 
+  nameList.add("Hi");
+  
+The variable ``message`` declared below has a **declared type** of ``Object`` and an **actual** or **run-time type** of ``String``.  Since the declared type of ``message`` is ``Object`` thie code ``message.indexOf("h");`` will cause a compiler error since the ``Object`` class does not have an ``indexOf`` method.
+  
+.. code-block:: java 
 
-Any object variable can refer to an object of the declared type or *any descendant (subclass) of the declared type* at run-time.  At compile time the compiler uses the declared type to check that the methods you are trying to use are available to an object of that type.  The code won't compile if the methods don't exist in that class or some parent class of that class.  At run-time the actual method that is called depends on the actual type of the object.  Remember that an object keeps a reference to the class that created it (an object of the class called ``Class``).  When a method is called at run-time the first place that is checked for that method is the class that created the object.  If the method is found there it will be executed.  If not, the parent of that class will be checked and so on until the method is found.  
+  Object message = new String("hi");
+  message.indexOf("h");
+  
+.. note ::
+
+   Any object variable can refer to an object of the declared type or *any descendant (subclass) of the declared type* at run-time. The class ``String`` inherits from the class ``Object`` so an ``Object`` variable can hold a reference to a ``String`` object.  But, you can only call methods that are available in the ``Object`` class unless you cast it back to the ``String`` class.
+
+At compile time the compiler uses the declared type to check that the methods you are trying to use are available to an object of that type.  The code won't compile if the methods don't exist in that class or some parent class of that class.  At run-time the actual method that is called depends on the actual type of the object.  Remember that an object keeps a reference to the class that created it (an object of the class called ``Class``).  When a method is called at run-time the first place that is checked for that method is the class that created the object.  If the method is found there it will be executed.  If not, the parent of that class will be checked and so on until the method is found.  
 
 
 **Check your understanding**
@@ -56,31 +74,35 @@ Any object variable can refer to an object of the declared type or *any descenda
       public class Shape {
          public void what() { System.out.print("Shape ");}
          
-         public static void main(String[] args)
+         public static void main(String[] args) {
          
             Shape[] shapes = {new Shape(), new Rectangle(), new Square(), 
                               new Circle()};
             for (Shape s : shapes)
             {
-               System.out.print(s.what() + " ");
+               s.what();
+               System.out.print(" ");
             }
+         }
 
       } 
 
-      public class Rectangle extends Shape {
+      class Rectangle extends Shape {
          public void what() { System.out.print("Rectangle "); }
       }
 
-      public class Square extends Rectangle {
+      class Square extends Rectangle {
       }
       
-      public class Oval extends Shape {
+      class Oval extends Shape {
          public void what() { System.out.print("Oval "); }
       }
 
-      public class Circle extends Oval {
+      class Circle extends Oval {
          public void what() { System.out.print("Circle ");}
       }
+      
+You can step through this code using the Java Visualizer by clicking on the following link `Shape Example <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Shape+%7B%0A+++public+void+what()+%7B+System.out.print(%22Shape+%22)%3B%7D%0A+++++++++%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A+++++++++%0A++++++Shape%5B%5D+shapes+%3D+%7Bnew+Shape(),+new+Rectangle(),+new+Square(),+%0A++++++++++++++++++++++++++++++new+Circle()%7D%3B%0A++++++for+(Shape+s+%3A+shapes)%0A++++++%7B%0A+++++++++s.what()%3B%0A+++++++++System.out.print(%22+%22)%3B%0A++++++%7D%0A+++%7D%0A%0A%7D+%0A%0Aclass+Rectangle+extends+Shape+%7B%0A+++public+void+what()+%7B+System.out.print(%22Rectangle+%22)%3B+%7D%0A%7D%0A%0Aclass+Square+extends+Rectangle+%7B%0A%7D%0A++++++%0Aclass+Oval+extends+Shape+%7B%0A+++public+void+what()+%7B+System.out.print(%22Oval+%22)%3B+%7D%0A%7D%0A%0Aclass+Circle+extends+Oval+%7B%0A+++public+void+what()+%7B+System.out.print(%22Circle+%22)%3B%7D%0A%7D%0A%0A&mode=display&curInstr=38>`_.
       
 **Check your understanding**
 
@@ -100,25 +122,31 @@ Any object variable can refer to an object of the declared type or *any descenda
    .. code-block:: java 
    
       public class Student {
+      
          public String getFood() {
             return "Pizza";
          }
+         
          public String getInfo()  { 
            return this.getFood(); 
          }
+         
+         public static void main(String[] args)
+         {
+           Student s1 = new GradStudent();
+           s1.getInfo();
+         }
       }
 
-      public class GradStudent extends Student {
+      class GradStudent extends Student {
+      
         public String getFood() {
            return "Taco";
         }
         
-        public static void main(String[] args)
-        {
-           Student s1 = new GradStudent();
-           s1.getInfo();
-        }
       }
+      
+You can step through this code using the Java Visualizer by clicking on the following link `Student Example <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Student+%7B%0A+++%0A+++public+String+getFood()+%7B%0A++++++return+%22Pizza%22%3B%0A+++%7D%0A+++%0A+++public+String+getInfo()++%7B+%0A++++++return+this.getFood()%3B+%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++Student+s1+%3D+new+GradStudent()%3B%0A++++++System.out.println(s1.getInfo())%3B%0A+++%7D%0A%7D%0A%0Aclass+GradStudent+extends+Student+%7B%0A+++%0A+++public+String+getFood()+%7B%0A++++++return+%22Taco%22%3B%0A+++%7D%0A++++++++%0A+++%0A%7D%0A&mode=display&curInstr=10>`_.
  
 .. mchoice:: qoo_12
    :answer_a: 5 6 10 11
@@ -144,24 +172,27 @@ Any object variable can refer to an object of the declared type or *any descenda
 
         public void addFuel() { fuel++; }
         public void display() { System.out.print(fuel + " "); }
-      }
-
-      public class RaceCar extends Car
-      {
-        public RaceCar(int g) { super(2*g); }
         
         public static void main(String[] args)
         {
            Car car = new Car(5);
            Car fastCar = new RaceCar(5);
-           car.display()
+           car.display();
            car.addFuel();
            car.display();
            fastCar.display();
            fastCar.addFuel();
            fastCar.display();
         }
+        
+      }
+
+      class RaceCar extends Car
+      {
+        public RaceCar(int g) { super(2*g); }
       } 
+      
+You can step through the code using the Java Visualizer by clicking on the following link: `Car Example <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Car%0A%7B%0A+++private+int+fuel%3B%0A%0A+++public+Car()+%7B+fuel+%3D+0%3B+%7D+%0A+++public+Car(int+g)+%7B+fuel+%3D+g%3B+%7D%0A%0A+++public+void+addFuel()+%7B+fuel%2B%2B%3B+%7D%0A+++public+void+display()+%7B+System.out.print(fuel+%2B+%22+%22)%3B+%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++Car+car+%3D+new+Car(5)%3B%0A++++++Car+fastCar+%3D+new+RaceCar(5)%3B%0A++++++car.display()%3B%0A++++++car.addFuel()%3B%0A++++++car.display()%3B%0A++++++fastCar.display()%3B%0A++++++fastCar.addFuel()%3B%0A++++++fastCar.display()%3B%0A++++%7D%0A%7D%0A%0Aclass+RaceCar+extends+Car%0A%7B%0A+++public+RaceCar(int+g)+%7B+super(2*g)%3B+%7D%0A%7D+%0A&mode=display&curInstr=0>`_.
       
 .. mchoice:: qoo_13
    :answer_a: b.getISBN();
@@ -221,9 +252,15 @@ Any object variable can refer to an object of the declared type or *any descenda
          {
             System.out.print("B");
          }
+         
+         public static void main(String[] args)
+         {
+            Base b = new Derived();
+            b.methodOne();
+         }
       }
 
-      public class Derived extends Base
+      class Derived extends Base
       {
          public void methodOne()
          {
@@ -238,5 +275,5 @@ Any object variable can refer to an object of the declared type or *any descenda
          }
       }
 
-
+You can step through this code using the Java Visulaizer by clicking on the following link: `Base Example <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Base%0A%7B%0A+++public+void+methodOne()%0A+++%7B%0A++++++System.out.print(%22A%22)%3B%0A++++++methodTwo()%3B%0A+++%7D%0A%0A+++public+void+methodTwo()%0A+++%7B%0A++++++System.out.print(%22B%22)%3B%0A+++%7D%0A+++++++++%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++Base+b+%3D+new+Derived()%3B%0A++++++b.methodOne()%3B%0A+++%7D%0A%7D%0A%0Aclass+Derived+extends+Base%0A%7B%0A+++public+void+methodOne()%0A+++%7B%0A++++++super.methodOne()%3B%0A++++++System.out.print(%22C%22)%3B%0A+++%7D%0A%0A+++public+void+methodTwo()%0A+++%7B%0A++++++super.methodTwo()%3B%0A++++++System.out.print(%22D%22)%3B%0A+++%7D%0A%7D&mode=display&curInstr=10>`_.
 

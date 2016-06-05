@@ -33,6 +33,16 @@ Several students at Georgia Tech have helped review the eBook:
 * Kantwon Rogers
 * Hemanth Koralla
 * Ikenna Omekam
+* Gabriel Galarza
+* Ja'Quan Taylor
+* Nimish Todi 
+* Ashraf Younis
+* Sana Ajani
+* Yamini Nambiar
+* Andrew Teachout
+* Sydni Peterson
+* Bhavika Devnani
+* Stephanie Remy
 
 Several students have also been involved in the creation of content for the eBook.
 
@@ -41,6 +51,7 @@ Several students have also been involved in the creation of content for the eBoo
 * Nicole Guobadia - created videos explaining concepts (recursion)
 * Daniel Boaitey - created free response videos from 2014 questions.
 * Christy Zachary - created free response videos and Java executable examples
+* Javier Rodriguez - added a new exam (non-timed #1)
 
 License
 ---------
@@ -51,6 +62,7 @@ All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
+
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright

@@ -27,8 +27,8 @@ To identify a selection sort look for the following:
 
 The code for ``selectionSort`` below is from the AP CS A course description. 
 
-.. code-block:: java 
-  :linenos:
+.. activecode:: selSort
+  :language: java
   
   import java.util.Arrays;
   
