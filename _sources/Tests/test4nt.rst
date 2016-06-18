@@ -1,92 +1,74 @@
 .. qnum::
-   :prefix: 14-4-
+   :prefix: 14-5-
    :start: 1
    
-Exam 3 for the AP CS A Exam (not timed)
+Exam 4 for the AP CS A Exam (not timed)
 ----------------------------------------
 
 The following problems are similar to what you might see on the AP CS A exam.  Please answer each to the best of your ability. 
 
-.. mchoice:: qtnt3_1
-   :answer_a: 4 
-   :answer_b: 15
-   :answer_c: 9
-   :answer_d: 14
-   :answer_e: 5
-   :correct: c
-   :feedback_a: The method makes more than 4 calls. Remember that the method must make a call to check every value of n, even if n is the value in the base case.
-   :feedback_b: This would be correct if t(6) was used. Try tracing the code again.
-   :feedback_c: t(5) returns t(4) - t(3). t(4) returns t(3) - t(2), while t(3) returns t(2) - t(1). If you trace the code throughout the calls, t is called 9 times.
-   :feedback_d: This would be correct if the method reached the base case when n equaled 1 or 0, not 1 or 2. Check the code to see when a recursive call is made. 
-   :feedback_e: This would be correct if t(4) was called. Try tracing the code again.
-   
-   Consider the following segment of code.  For the method call ``t(5)``, how many calls to ``t`` will be made, including the original call?
-   
-   .. code-block:: java
-
-     public int t(int n)
-     {
-         if (n == 1 || n == 2)
-    	     return 2 * n;
-    	     
-    	 else
-    	     return t(n - 1) - t(n - 2);
-     }
-        
-.. mchoice:: qtnt3_2
-   :answer_a: I only 
-   :answer_b: II only
-   :answer_c: III only
-   :answer_d: I and II only
-   :answer_e: I, II, and III
+.. mchoice:: qtnt4_1
+   :answer_a: arr[i][j]
+   :answer_b: arr[0][0]
+   :answer_c: 0
+   :answer_d: -1
+   :answer_e: 1
    :correct: b
-   :feedback_a: The color is a private instance variable in Bird. Children classes do not have direct access to private variables.  They must use the public getter and setter methods to access the private variables.
-   :feedback_b: The public eat method was inherited from the Bird class and can be called from code in the Swan class.
-   :feedback_c: Constructors are not inherited by sub classes. Only public accessor and mutator methods are inherited by sub classes.
-   :feedback_d: II is correct, but I is incorrect. Private instance variables cannot be directly accessed by the child class.
-   :feedback_e: II is correct, but I and III are incorrect. Constructors are not inherited and subclasses do not have direct access to private instance variables.
+   :feedback_a: Notice where min is instantiated in the code. At the time that min is instantiated, i and j have not been instantiated and cannot be used. This choice will create a compile-time error.
+   :feedback_b: Using the first value in the array guarantees that the correct minimum value will be found and returned, regardless of the range of numbers in the array.
+   :feedback_c: Setting min equal to 0 might find the minimum value in some cases. However, if every number in the array is positive, then min will remain 0 and the minimum value in the array will not have been found.
+   :feedback_d: If min equaled -1, the method would only work correctly if there was a value in the array that was smaller than -1. If all of the values in the array are greater than -1, then the correct minimum value will not be found.
+   :feedback_e: This value would only work correctly if there was a value in the array that was less than 1. If the array is filled with positive numbers, 1 will remain the minimum and the correct minimum may not be found.
    
-   Consider the following class declarations. Which of the following code can be executed in the ``Swan`` class?
+   Consider the method ``minVal``, shown below. ``minVal`` compares every value in the array to ``min`` to find the smallest value, which is then returned. At the beginning of the code, ``min`` is instantiated to 1. Which of the following is the best value to instantiate ``min``?
    
    .. code-block:: java
 
-      public class Bird
-      {
-          private String color;
+     public int minVal (int[][] arr)
+     {
+         int min = 1;
          
-          public Bird(String theColor)
-          {
-              /* implementation not shown */
-          }
-           
-          public void makeNoise()
-          {
-              /* implementation not shown */
-          }
-           
-          public void eat()
-          {
-              /* implementation not shown */
-          }
-           
-          public string showFeathers()
-          {
-              return color;
-          }
-      } 
-      public class Swan extends Bird
+         for (int i = 0; i < arr.length; i++)
+         {
+             for (int j = 0; j < arr[0].length; j++)
+             {
+                 if (arr[i][j] < min)
+                     min = arr[i][j];
+             }
+         }
+         
+         return min;
+     }
+     
+     
+        
+.. mchoice:: qtnt4_2
+   :answer_a: 5
+   :answer_b: 6
+   :answer_c: 8
+   :answer_d: 13
+   :answer_e: 15
+   :correct: a
+   :feedback_a: fibonacci(5) returns fibonacci(4) + fibonacci(3). fibonacci(4) returns fibonacci(3) and fibonacci(2). fibonacci(3) returns fibonacci(2) + fibonacci(1). fibonacci(2) returns fibonacci(1) + fibonacci(0). fibonacci(1) returns 1, and fibonacci(0) returns 0. When the code is traced, 5 is returned.
+   :feedback_b: Check your tracing to make sure that fibonacci(0) returned 0 and fibonacci(1) returned 1.
+   :feedback_c: This is the answer returned for fibonacci(6). Check your tracing and try again.
+   :feedback_d: This is the answer returned for fibonacci(7). Check your tracing and try again.
+   :feedback_e: Notice what is returned in the if statement. fibonacci(0) returns 0, not 1.
+   
+   The ``fibonacci`` method is shown below. What is returned as a result of ``fibonacci(5)``?
+   
+   .. code-block:: java
+   
+      public int fibonacci (int num)
       {
-          /* no constructors or other methods have been declared */
+          if (num <= 1)
+              return num;
+          
+          else
+              return fibonacci(num - 1) + fibonacci(num - 2);
       }
-      
-      
-      I. this.color = "blue";
-      
-      II. eat();
-      
-      III. Swan s = new Swan("blue");
 
-.. mchoice:: qtnt3_3
+.. mchoice:: qtnt4_3
    :answer_a: [7, 1, 4, 8, 3]
    :answer_b: [7, 8, 1, 2, 4, 3]
    :answer_c: [7, 3, 1, 4, 3]
@@ -110,7 +92,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       list.add(3);
       
 
-.. mchoice:: qtnt3_4
+.. mchoice:: qtnt4_4
    :answer_a: arr[i][j] = ans[i];
    :answer_b: ans[i] += arr[i][j];
    :answer_c: ans[i ][j] += arr[i][j];
@@ -142,7 +124,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       	  return ans;
       } 
       
-.. mchoice:: qtnt3_5
+.. mchoice:: qtnt4_5
    :answer_a: 1
    :answer_b: 2
    :answer_c: 3
@@ -182,7 +164,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       	 return -1;
       }
 
-.. mchoice:: qtnt3_6
+.. mchoice:: qtnt4_6
    :answer_a: "!hello!"
    :answer_b: "hello!"
    :answer_c: "!hello"
@@ -208,7 +190,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
               return wordScramble(str.substring(1)) + str.substring(0,1);
       }
 
-.. mchoice:: qtnt3_7
+.. mchoice:: qtnt4_7
    :answer_a: I only 
    :answer_b: II only
    :answer_c: III only
@@ -243,7 +225,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
                System.out.print(i + " ");
            }
 
-.. mchoice:: qtnt3_8
+.. mchoice:: qtnt4_8
    :answer_a: I only
    :answer_b: II only
    :answer_c: III only
@@ -294,7 +276,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
            age = theAge;
            grade = theGrade;
 
-.. mchoice:: qtnt3_9
+.. mchoice:: qtnt4_9
    :answer_a: [62, 45, 30, 12, 7, 8, 10, 3] 
    :answer_b: [30, 12, 8, 7, 62, 45, 10, 3]
    :answer_c: [62, 45, 30, 7, 12, 8, 10, 3]
@@ -309,7 +291,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
    
    A list of integers containing ``[12, 8, 7, 30, 62, 45, 10, 3]`` is sorted from largest to smallest using a selection sort method. After three passes, what does the list look like?
 
-.. mchoice:: qtnt3_10
+.. mchoice:: qtnt4_10
    :answer_a: "My name is Piglet!"
    :answer_b: "Piglet"
    :answer_c: "My name is Animal!"
@@ -374,7 +356,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       }
       		
       		
-.. mchoice:: qtnt3_11
+.. mchoice:: qtnt4_11
    :answer_a: arr[i] / 2 = 2
    :answer_b: arr[i] % 2 == 1
    :answer_c: arr[i] / 2 == 1
@@ -402,7 +384,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       	   }
       }
 
-.. mchoice:: qtnt3_12
+.. mchoice:: qtnt4_12
    :answer_a: 4
    :answer_b: 5
    :answer_c: 0
@@ -428,7 +410,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
                 return (num % 10) + sums(num / 10);
       }
 
-.. mchoice:: qtnt3_13
+.. mchoice:: qtnt4_13
    :answer_a: I only
    :answer_b: II only
    :answer_c: III only
@@ -476,7 +458,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       }
       return false;
       
-.. mchoice:: qtnt3_14
+.. mchoice:: qtnt4_14
    :answer_a: (int) (Math.random() * 25) * 1
    :answer_b: (int) (Math.random() + 1) * 25
    :answer_c: (int) (Math.random() + 25) * 1
@@ -492,7 +474,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
    You need to find a random integer in the range 1 to 25, inclusive. Which of the following always returns a value that satisfies this condition? 
 
 
-.. mchoice:: qtnt3_15
+.. mchoice:: qtnt4_15
    :answer_a: 5
    :answer_b: 7
    :answer_c: 10
@@ -509,7 +491,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
    A list of 120 names has been sorted in alphabetical order. Using a binary search method, what is the minimum number of passes needed to find a specified name or confirm that it is not in the list?
    
 
-.. mchoice:: qtnt3_16
+.. mchoice:: qtnt4_16
    :answer_a: When the length of str is less than 15
    :answer_b: When the length of str is greater than or equal to 15
    :answer_c: When the length of str is equal to 0
@@ -535,7 +517,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
            recur(str + "!");
       }
 
-.. mchoice:: qtnt3_17
+.. mchoice:: qtnt4_17
    :answer_a: I only
    :answer_b: II only
    :answer_c: III only
@@ -596,7 +578,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       IV. Fruit d = new Fruit("strawberry");
       
 
-.. mchoice:: qtnt3_18
+.. mchoice:: qtnt4_18
    :answer_a: System.out.print(arr[x] + " ");
    :answer_b: System.out.print(x + " ");
    :answer_c: System.out.print(x.toString() + " ");
@@ -626,7 +608,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
            }
       }
 
-.. mchoice:: qtnt3_19
+.. mchoice:: qtnt4_19
    :answer_a: (x < 10) && (x > 5)
    :answer_b: (x > 10) && (x <=5)
    :answer_c: (x <= 10) && (x > 5)
@@ -641,7 +623,7 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       
    Which of the following is equivalent to ``! ( (x > 10) && (x <= 5) )``?
 
-.. mchoice:: qtnt3_20
+.. mchoice:: qtnt4_20
    :answer_a: 12
    :answer_b: 243
    :answer_c: 81
