@@ -73,7 +73,8 @@ The following problems are similar to what you might see on the AP CS A exam.  P
           {
               return color;
           }
-      } 
+      }
+       
       public class Swan extends Bird
       {
           /* no constructors or other methods have been declared */
@@ -134,9 +135,9 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       	  for (int i = 0; i < arr.length; i++)
       	  {
       	      for (int j = 0; j < arr[0].length; j++)
-      		  {
-      		      /* to be determined */
-      		  }
+      	      {
+      	          /* to be determined */
+      	      }
       	  }
       		
       	  return ans;
@@ -395,10 +396,10 @@ The following problems are similar to what you might see on the AP CS A exam.  P
       {
            for (int i = 0; i < arr.length; i++)
       	   {
-      		  //if the number at arr[i] is even, it becomes 0
-      				
-      		  if( /* to be determined */ )
-      			  arr[i] = 0;
+      	      //if the number at arr[i] is even, it becomes 0
+      	      
+      	      if( /* to be determined */ )
+      	          arr[i] = 0;
       	   }
       }
 
